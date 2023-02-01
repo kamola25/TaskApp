@@ -7,4 +7,5 @@
     <string name="desc">desc</string>
     <string name="sort">sort</string>
     <string name="add">add</string>
+    <string name="enable_dark_mode">Enable dark mode</string>
 </resources>
