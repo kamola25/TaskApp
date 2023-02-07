@@ -13,6 +13,7 @@ import com.kiro.taskapp.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
     private lateinit var binding : FragmentMainBinding
+    private lateinit var adapterMain: AdapterMain
 
 
     override fun onCreateView(
@@ -21,16 +22,23 @@ class MainFragment : Fragment() {
     ): View {
         binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
+
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adapterMain = AdapterMain()
         val navController =
             requireActivity().supportFragmentManager.findFragmentById(R.id.navHost_fragment) as NavHostFragment
+
         binding.btnEdit.setOnClickListener {
             navController.navController.navigate(R.id.editFragment)
+
         }
+
+
 
 
         binding.switcherMode.setOnClickListener {

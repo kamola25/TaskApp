@@ -6,8 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kiro.taskapp.databinding.RvItemBinding
 
 class AdapterMain: RecyclerView.Adapter<AdapterMain.ViewHolder>() {
-    inner class ViewHolder(private val binding: RvItemBinding): RecyclerView.ViewHolder(binding.root){
 
+    private lateinit var list:MutableList<ModelTitle>
+    fun addNote(note: ModelTitle){
+        list.add(note)
+        notifyItemInserted(list.size)}
+
+    inner class ViewHolder(private var binding: RvItemBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind(note: ModelTitle){
+            binding.txtTitle.text = note.title
+            binding.txtDescription.text = note.description
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,11 +26,17 @@ class AdapterMain: RecyclerView.Adapter<AdapterMain.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        holder.bind(list[position])
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return list.size
 
     }
+
+
+
 }
+
+
+
